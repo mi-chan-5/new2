@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+  <title>はじめてのサイト</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center; /* 横方向に中央 */
+      align-items: center;     /* 縦方向に中央 */
+      flex-direction: column;  /* 要素を縦に並べる */
+      text-align: center;      /* テキストも中央揃え */
+    }
+  </style>
+</head>
+<body>
+  <h1>こんにちは！</h1>
+  <p>これは最初のサイトです。</p>
+
+  <button onclick="sayHello()">クリックしてね</button>
+
+  <script>
+    function sayHello() {
+      alert("やっほー！");
+    }
+  </script>
+</body>
+</html>
