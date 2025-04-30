@@ -48,14 +48,6 @@
       }
     }
 
-    @keyframes pop {
-      transform: scale(0);
-    }
-
-    .bubble-pop {
-      animation: pop 0.2s ease-out forwards;
-    }
-
     .bubble-btn:nth-child(1) {
       top: 20%;
       left: 12%;
@@ -113,19 +105,14 @@
   <h1 class="home-title">HOME</h1>
 
   <script>
-    function popBubble(button) {
-      // 現在の位置を固定
-      button.style.animation = 'none'; // アニメーションを無効化
-      button.style.transform = button.style.transform; // 現在の位置を強制的に保持
+function popBubble(button) {
+  button.style.transform = 'scale(0)'; // 即座に縮小して消す
+  button.style.transition = 'transform 0s'; // 即座に変化するように
+  setTimeout(() => {
+    button.style.display = 'none'; // ボタンを非表示にする
+  }, 0); // 即座に実行されるように0msで設定
+}
 
-      // ポップアニメーションを適用
-      button.classList.add('bubble-pop');
-
-      // ポップ後にボタンを非表示にする
-      setTimeout(() => {
-        button.style.display = 'none';
-      }, 200);
-    }
   </script>
 
 </body>
