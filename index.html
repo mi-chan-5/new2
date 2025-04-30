@@ -38,15 +38,29 @@
       border-radius: 30%;
     }
 
-    @keyframes floatUp {
+ @keyframes floatUp {
       0% {
-        transform: translateY(0) translateX(0);
+        transform: translateY(0) translateX(0); /* 最初はX軸・Y軸ともに0 */
         opacity: 1;
       }
-      100% {
-        transform: translateY(-100vh) translateX(0vw);
-      }
+
+      10% {transform: translateY(-10vh) translateX(2vw);   }
+      15% {transform: translateY(-15vh) translateX(4vw);  }
+      20% {transform: translateY(-20vh) translateX(2vw);   }
+      25% {transform: translateY(-25vh) translateX(-1vw);    }
+      30% {transform: translateY(-30vh) translateX(-4vw);   }
+      35% {transform: translateY(-35vh) translateX(-2vw);  }
+      45% {transform: translateY(-45vh) translateX(0vw);   }
+      60% {transform: translateY(-60vh) translateX(2vw);    }
+      70% {transform: translateY(-70vh) translateX(3vw);   }
+      75% {transform: translateY(-75vh) translateX(5vw);   }
+      80% {transform: translateY(-80vh) translateX(3vw);   }
+      85% {transform: translateY(-85vh) translateX(2vw);     }
+      90% {transform: translateY(-90vh) translateX(0vw);   }
+      95% {transform: translateY(-95vh) translateX(-2vw);   }
+      100% {transform: translateY(-100vh) translateX(0vw);  }
     }
+
 
     .bubble-btn:nth-child(1) {
       top: 20%;
