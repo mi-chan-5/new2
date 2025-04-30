@@ -18,65 +18,44 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background-color:#ffbf7f;
+      background-color: #ffbf7f;
       border: 1px solid #ffffff;
       cursor: pointer;
-      box-shadow: ;
-      animation: float 3s ease-in-out infinite;
+      animation: floatUp 5s linear forwards;
       transition: transform 0.3s, opacity 0.3s;
       font-size: 16px;
       color: #333;
-
-       animation: floatUp 5s linear forwards;
     }
 
-
-.bubble-btn::before {
-  content: ''; /* 擬似要素を生成 */
-  position: absolute;
-  top: 18%; /* シャボン玉の中で点を上の方に配置 */
-  left: 22%; /* シャボン玉の中心に配置 */
-  width: 15px; /* 白い点の大きさ */
-  height: 7px;
-  background-color: white; /* 白い色 */
-border-radius: 30%; /* 丸い形に */
-}
-
+    .bubble-btn::before {
+      content: '';
+      position: absolute;
+      top: 18%;
+      left: 22%;
+      width: 15px;
+      height: 7px;
+      background-color: white;
+      border-radius: 30%;
+    }
 
     @keyframes floatUp {
       0% {
-        transform: translateY(0) translateX(0); /* 最初はX軸・Y軸ともに0 */
+        transform: translateY(0) translateX(0);
         opacity: 1;
       }
-
-      10% {transform: translateY(-10vh) translateX(2vw);   }
-      15% {transform: translateY(-15vh) translateX(4vw);  }
-      20% {transform: translateY(-20vh) translateX(2vw);   }
-      25% {transform: translateY(-25vh) translateX(-1vw);    }
-      30% {transform: translateY(-30vh) translateX(-4vw);   }
-      35% {transform: translateY(-35vh) translateX(-2vw);  }
-      45% {transform: translateY(-45vh) translateX(0vw);   }
-      60% {transform: translateY(-60vh) translateX(2vw);    }
-      70% {transform: translateY(-70vh) translateX(3vw);   }
-      75% {transform: translateY(-75vh) translateX(5vw);   }
-      80% {transform: translateY(-80vh) translateX(3vw);   }
-      85% {transform: translateY(-85vh) translateX(2vw);     }
-      90% {transform: translateY(-90vh) translateX(0vw);   }
-      95% {transform: translateY(-95vh) translateX(-2vw);   }
-      100% {transform: translateY(-100vh) translateX(0vw);  }
+      100% {
+        transform: translateY(-100vh) translateX(0vw);
+      }
     }
 
-
-
     @keyframes pop {
-        transform: scale(0); /* 完全に小さくして消える */
+      transform: scale(0);
     }
 
     .bubble-pop {
       animation: pop 0.2s ease-out forwards;
     }
 
-    /* 不規則な位置に配置するための個別設定 */
     .bubble-btn:nth-child(1) {
       top: 20%;
       left: 12%;
@@ -90,7 +69,7 @@ border-radius: 30%; /* 丸い形に */
       left: 0%;
       width: 150px;
       height: 150px;
-      animation-duration: 20s; /* 速度を変える */
+      animation-duration: 20s;
     }
 
     .bubble-btn:nth-child(3) {
@@ -101,27 +80,27 @@ border-radius: 30%; /* 丸い形に */
       animation-duration: 14s;
     }
 
-.orange-box {
-  position: absolute;
-  left: 50px;
-  bottom: 0;
-  width: 150px; /* 横幅 */
-  height: 400px; /* 高さ */
-  background-color: #ffbf7f; /* オレンジ色 */
-  border: 2px solid #ffffff; /* 白い境界線 */
-}
+    .orange-box {
+      position: absolute;
+      left: 50px;
+      bottom: 0;
+      width: 150px;
+      height: 400px;
+      background-color: #ffbf7f;
+      border: 2px solid #ffffff;
+    }
 
-.home-title {
-  position: absolute;
-  top: 3%; /* 上から3%の位置 */
-  left: 50%;
-  transform: translateX(-50%); /* 左右中央揃え */
-  font-size: 36px; /* フォントサイズ */
-  font-family: 'Poppins', sans-serif; /* かわいらしいフォント（Google Fontsから） */
-  color: white; /* 白色 */
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* 文字に影をつけて立体感を出す */
-  letter-spacing: 2px; /* 文字間隔を少し広く */
-}
+    .home-title {
+      position: absolute;
+      top: 3%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 36px;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      letter-spacing: 2px;
+    }
 
   </style>
 </head>
@@ -129,13 +108,20 @@ border-radius: 30%; /* 丸い形に */
   <button class="bubble-btn" onclick="popBubble(this)"></button>
   <button class="bubble-btn" onclick="popBubble(this)"></button>
   <button class="bubble-btn" onclick="popBubble(this)"></button>
-<div class="orange-box"></div>
+  <div class="orange-box"></div>
 
-<h1 class="home-title">HOME</h1>
+  <h1 class="home-title">HOME</h1>
 
   <script>
     function popBubble(button) {
+      // 現在の位置を固定
+      button.style.animation = 'none'; // アニメーションを無効化
+      button.style.transform = button.style.transform; // 現在の位置を強制的に保持
+
+      // ポップアニメーションを適用
       button.classList.add('bubble-pop');
+
+      // ポップ後にボタンを非表示にする
       setTimeout(() => {
         button.style.display = 'none';
       }, 200);
